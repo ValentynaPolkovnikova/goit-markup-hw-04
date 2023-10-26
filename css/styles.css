@@ -112,6 +112,23 @@ padding: 24px 0;
 .menu-link:focus {
 color: #404bbf;
 }
+.menu-accent {
+position: relative;
+color: #404bbf;  
+}
+.menu-link.menu-accent::after {
+display: block;
+content: '';  /* обов'язковий атрибут */
+position: absolute;
+bottom: -1px;
+left: 0;
+width: 100%;
+height: 4px;
+border-radius: 2px;
+background-color: #404BBF; 
+color: #404BBF;
+}
+
 .contacts {
 font-style: normal;   
 display: flex;
@@ -233,7 +250,7 @@ height: 64px;
 flex-shrink: 0;
 margin-left: 100px;
 margin-top: 24px;
-fill:#4d5ae5, #2E2F42;
+fill:#4d5ae5, #2e2f42;
 }
 /* ============= section Our Team ============= */
 .team {
@@ -296,7 +313,24 @@ width: 232px;
 /*background-color: #ffffff;
 padding-bottom: 32px;*/
 }
-
+.team-social-list {
+    display: flex;
+    gap: 24px;
+    width: 232px;
+    color: #2E2F42;
+/*justify-content: space-between;*/
+justify-content: center;
+align-content: center;
+list-style-type: none;
+margin-top: 8px;
+}
+.team-social-list-item {
+    border-radius: 50%;
+    background-color: #4D5AE5;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0; 
+}
 /* ============= PORTFOLIO ============= */
 .portfolio {
 flex-shrink: 0;         /*Значення 0 заборонить елементу стискатися*/
@@ -437,7 +471,14 @@ letter-spacing: 0.32px;
 justify-content: space-between;
 list-style-type: none;
   margin-top: 16px;
-  padding: 120px 0;
+  margin-left: 120px;
+}
+.footer-social-list-item {
+    border-radius: 50%;
+    background-color: #4D5AE5;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0; 
 }
 .social-icon-item {
     color: #F4F4FD;
