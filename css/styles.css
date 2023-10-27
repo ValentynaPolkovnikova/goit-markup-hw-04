@@ -66,6 +66,9 @@ letter-spacing: 0.03em;
 border-bottom: 1px solid #E7E9FC; 
 padding-top: 24px;
 padding-bottom: 24px;
+box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 
+            0px 1px 1px rgba(46, 47, 66, 0.16), 
+            0px 1px 6px rgba(46, 47, 66, 0.08); /*для визначення тіні для елемента*/
 }
 .navigation {
 display: flex;
@@ -115,12 +118,13 @@ color: #404bbf;
 .menu-accent {
 position: relative;
 color: #404bbf;  
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для плавної зміни кольору текстового контенту*/
 }
 .menu-link.menu-accent::after {
 display: block;
 content: '';  /* обов'язковий атрибут */
 position: absolute;
-bottom: -1px;
+bottom: -1px; /*встановлення відстані між нижнім краєм елемента і нижнім краєм його батьківського елемента*/
 left: 0;
 width: 100%;
 height: 4px;
@@ -145,6 +149,7 @@ font-weight: 400;
 line-height: 1.5;
 letter-spacing: 0.02em;
 color: #434455;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для плавної зміни кольору текстового контенту*/
 }
 .menu-link-contacts:hover,
 .menu-link-contacts:focus {
@@ -155,10 +160,8 @@ color: #404bbf;
 background: #2E2F42;
 display: flex;
 padding: 188px 0;
-width: 1440px;
+max-width: 1440px;
 margin: 0 auto;
-/*text-align: center;
-height: 600px;*/
 background-image: linear-gradient(rgba(46, 47, 66, 0.70), rgba(46, 47, 66, 0.70)), url('../images/office.jpg');
 background-repeat: no-repeat;
 background-position: center center;
@@ -195,6 +198,7 @@ border-radius: 4px;
 margin-left: auto;
 margin-right: auto;
 cursor: pointer;
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для плавної зміни кольору фону елемента*/
 }
 .button-main:hover,
 .button-main:focus {
@@ -236,6 +240,9 @@ width: 264px;
 font-family: Roboto;
 }
 .icon-container {
+display: flex;
+align-items: center; /*для вирівнювання іконки по вертикалі*/
+justify-content: center; /*для вирівнювання іконки по горизонталі*/
 width: 264px;
 height: 112px;
 flex-shrink: 0;
@@ -300,7 +307,6 @@ font-weight: 500;
 text-align: center;
 margin-bottom: 8px;
 width: 232px;
-/*background-color: #ffffff;*/
 }
 
 .team-text {
@@ -312,17 +318,17 @@ color: #434455;
 width: 232px;
 }
 .team-social-list {
-    display: flex;
-    gap: 24px;
-    width: 232px;
-    color: #2E2F42;
+display: flex;
+gap: 24px;
+width: 232px;
+color: #2E2F42;
 justify-content: center;
-align-content: center;
 list-style-type: none;
 margin-top: 8px;
 }
 .team-social-list-item {
 display: flex;
+position: relative;
 border-radius: 50%;
 background-color: #4D5AE5;
 width: 40px;
@@ -336,10 +342,19 @@ transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для пла
 display: flex;
 width: 100%;
 height: 100%;
+border-radius: 50%;
+background-color: #4D5AE5;
+flex-shrink: 0;
+align-items: center;
+justify-content: center;
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для плавної зміни кольору фону елемента*/
 }
-.team-social-list-item:hover,
-.team-social-list-item:focus {
+.social-icon:hover,
+.social-icon:focus {
 background-color: #404bbf;
+}
+.team-social-icon {
+fill: #f4f4fd;
 }
 /* ============= PORTFOLIO ============= */
 .portfolio {
@@ -366,27 +381,18 @@ margin-bottom: 72px;
 .portfolio-list {
 display: flex;
 flex-wrap: wrap;
-/*
-align-items: flex-start;
-background-color: #ffffff;
-border-radius: 0px 0px 4px 4px;
-column-gap: 24px;
-row-gap: 48px;
-justify-content: center;
-padding-bottom: 120px;*/
 }
 
 .portfolio-list-item {
 width: calc((100% - 48px) / 3);
 max-width: 360px;
-/*background-color: #ffffff;
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-flex-shrink: 0; 
-row-gap: 32px;
-align-items: center;
-padding-bottom: 0px;*/
+transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+transform: translateY(0%); /*При ховері на елемент списку змінюється стиль transform для параграфа*/
+}
+.portfolio-list-item:hover {
+box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
+            0px 1px 1px rgba(46, 47, 66, 0.16), 
+            0px 2px 1px rgba(46, 47, 66, 0.08); /*для визначення тіні для елемента при наведені мишкою*/ 
 }
 .portfolio-list-item:not(:nth-child(3n + 3)) {
 margin-right: 24px;
@@ -394,7 +400,32 @@ margin-right: 24px;
 .portfolio-list-item:nth-child(-1n + 3) { /*застосовуємо для всіх, по формулі з заду напередю Тобто, 3,2,1*/
 margin-bottom: 48px;
 }
-
+.overlay{
+position: relative; /*встановлення позиціонування елемента відносно його звичайного місця в потоці документу*/
+overflow: hidden; /*для приховання контенту, який виходить за межі елемента*/
+}
+.overlay-text{
+position: absolute; /*встановлює позиції елемента відносно його батьківського елемента*/
+display: flex;
+padding: 40px 32px;
+top: 0; /*зміщення елемента до верхньої межі контейнера*/
+left:0;
+width: 100%;
+height: 100%;
+background-color: #ffffff;
+transform: translateY(100%); /*змінює позицію елемента вздовж осі Y*/
+transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /*дозволяє задавати анімаційний ефект для зміни значень властивостей стилю*/
+color: #f4f4fd;
+background: var(--IRIS, #4D5AE5); 
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5; 
+letter-spacing: 0.02em;
+}
+.portfolio-list-item:hover .overlay-text,
+.portfolio-list-item:focus .overlay-text{
+transform: translateY(0%);
+}
 .portfolio-thumb {
 padding: 32px 16px;    
 border: 1px solid #E7E9FC;
@@ -425,7 +456,10 @@ background-color: #ffffff;
 }
 
 /* ============= FOOTER ============= */
-
+.footer-container {
+    display: flex;
+    align-items: baseline; /*переносить контент вниз (елементи вирівнюються по базовій лінії їхнього текстового вмісту)*/
+}
 .footer-left {
 margin-right: 120px;
 }
@@ -434,7 +468,6 @@ background:#2e2f42;
 flex-shrink: 0;
 height: 312px;
 padding: 100px 0;
-display: flex;
 display: flex;
 align-items: baseline; /*встановлює вирівнювання елементів у поперечному напрямку вздовж головної осі контейнера 
                          відносно базової лінії тексту першого рядка кожного елемента*/
@@ -468,11 +501,9 @@ line-height: 1.5;
 letter-spacing: 0.02em;
 max-width: 264px;
 }  
-.social {
-display: flex;
-gap: 16px;
-}
+
 .footer-social {
+text-align: left;
 color: #ffffff;
 font-family: Roboto;
 font-size: 16px;
@@ -482,31 +513,39 @@ line-height: 1.5; /* 150% */
 letter-spacing: 0.02em; /*для визначення відстані між літерами*/
 margin-bottom: 16px;
 }
+
 .footer-social-list {
 display: flex;
+justify-content: center;
 gap: 16px;
+}
+.footer-social-list-item {
+display: flex;
+position: relative;
 color: #2E2F42;
 justify-content: space-between;
 list-style-type: none;
 width: 40px;
 height: 40px;
-}
-.footer-social-list-item {
-display: flex;
-border-radius: 50%;
+border-radius: 50px;
 background-color: #4D5AE5;
-width: 100%;
-height: 100%;
-flex-shrink: 0; 
+transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+}
+.footer-social-link {
+display: flex; 
+border-radius: 50%;
+background-color: #4D5AE5; 
+width: 100%; 
+height: 100%; 
 align-items: center;
 justify-content: center;
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /*для плавної зміни кольору фону елемента*/
 }
 
-.footer-social-list-item:hover,
-.footer-social-list-item:focus {
+.footer-social-link:hover,
+.footer-social-link:focus {
 background-color: #31d0aa;
 }
 .social-icon-item {
-color: #F4F4FD;
+fill: #f4f4fd;
 }
